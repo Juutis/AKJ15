@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BookManager : MonoBehaviour
@@ -23,6 +24,7 @@ public class BookManager : MonoBehaviour
 
     void Start()
     {
+        InitializeGenres();
         if (Books == null)
         {
             Books = new List<Book>();
@@ -30,10 +32,8 @@ public class BookManager : MonoBehaviour
 
         for (int i = 0; i < bookCount; i++)
         {
-            Books.Add(new Book());
+            // Books.Add(new Book(Genre.History));
         }
-
-        InitializeGenres();
     }
 
     void Update()
@@ -60,5 +60,6 @@ public class BookManager : MonoBehaviour
         GenreText.Add(Genre.Rebel, RebelTexts.Texts);
         GenreText.Add(Genre.SoftScience, SoftScienceTexts.Texts);
         GenreText.Add(Genre.Vulgar, VulgarTexts.Texts);
+        GenreText.Add(Genre.History, HistoryTexts.Texts);
     }
 }

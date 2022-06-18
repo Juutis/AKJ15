@@ -13,6 +13,10 @@ public class PageRenderer : MonoBehaviour
 
     private BookPage page;
 
+    [SerializeField]
+    [InspectorName("Book Line UI elements")]
+    List<BookLineUI> bookLineUIs;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,15 @@ public class PageRenderer : MonoBehaviour
     {
         this.page = page;
         cam = GetComponentInChildren<Camera>();
+
+        for (int i = 0; i < bookLineUIs.Count; i++)
+        {
+            BookLineUI lineUI = bookLineUIs[i];
+            if (i < page.Lines.Count)
+            {
+                lineUI.Initialize(page.Lines[i].IsRandom, page.Lines[i].Text);
+            }
+        }
 
         var renderTexture = Instantiate(renderTextureTemplate);
         cam.targetTexture = renderTexture;

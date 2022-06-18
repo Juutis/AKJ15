@@ -28,12 +28,15 @@ public class BrowsableBook : MonoBehaviour
     void Start()
     {
         bookAnim = GetComponentInChildren<BookAnimator>();
-        InitializeBook(new Book());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (book == null)
+        {
+            InitializeBook(new Book(Genre.History));
+        }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             FlipToPreviousPage();

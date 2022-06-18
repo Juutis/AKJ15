@@ -4,5 +4,6 @@
     GenericProse,
     Vulgar,
     HardScience,
-    SoftScience
+    SoftScience,
+    History
 }

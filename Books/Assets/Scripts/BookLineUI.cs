@@ -28,42 +28,48 @@ public class BookLineUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (randomWord)
+    }
+
+    public void Initialize(bool random, string text)
+    {
+        randomWord = random;
+        uiText.text = text;
+        if (random)
         {
-            GenerateRandomWord();
+            uiText.color = new Color(0.25f, 0.25f, 0.25f);
         }
         else
         {
-            uiText.text = "This is a hotspot! :O";
             uiText.color = new Color(0, 0, 0);
+            // uiText.fontStyle = FontStyle.Bold;
         }
     }
 
-    private void GenerateRandomWord()
-    {
-        int charsLeft = lineLength;
-        bool firstWord = true;
-        while (charsLeft > 0)
-        {
-            int wordLen = Random.Range(minWordLength, maxWordLength);
-            charsLeft -= wordLen + 1; // space between words
-            string firstLetter = firstWord ? alphabetUpper[Random.Range(0, alphabetUpper.Count)] : alphabetLower[Random.Range(0, alphabetUpper.Count)];
-            firstWord = false;
-
-            StringBuilder word = new StringBuilder(firstLetter);
-
-            for (int i = 1; i < wordLen; i++)
-            {
-                word.Append(alphabetLower[Random.Range(0, alphabetUpper.Count)]);
-            }
-
-            word.Append(" ");
-            line += word;
-        }
-
-        uiText.text = line;
-        uiText.color = new Color(0.25f, 0.25f, 0.25f);
-    }
+    // private void GenerateRandomWord()
+    // {
+    //     int charsLeft = lineLength;
+    //     bool firstWord = true;
+    //     while (charsLeft > 0)
+    //     {
+    //         int wordLen = Random.Range(minWordLength, maxWordLength);
+    //         charsLeft -= wordLen + 1; // space between words
+    //         string firstLetter = firstWord ? alphabetUpper[Random.Range(0, alphabetUpper.Count)] : alphabetLower[Random.Range(0, alphabetUpper.Count)];
+    //         firstWord = false;
+    // 
+    //         StringBuilder word = new StringBuilder(firstLetter);
+    // 
+    //         for (int i = 1; i < wordLen; i++)
+    //         {
+    //             word.Append(alphabetLower[Random.Range(0, alphabetUpper.Count)]);
+    //         }
+    // 
+    //         word.Append(" ");
+    //         line += word;
+    //     }
+    // 
+    //     uiText.text = line;
+    //     uiText.color = new Color(0.25f, 0.25f, 0.25f);
+    // }
 
     // Update is called once per frame
     void Update()
