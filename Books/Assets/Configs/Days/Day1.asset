@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ac143b28e992d42a40da38d9b9b8df, type: 3}
   m_Name: Day1
   m_EditorClassIdentifier: 
-  bookCount: 3
+  genreBookCounts:
+  - genre: 0
+    count: 1
+  - genre: 1
+    count: 1
+  - genre: 2
+    count: 1

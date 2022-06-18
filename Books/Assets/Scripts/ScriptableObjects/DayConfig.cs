@@ -6,7 +6,14 @@ using UnityEngine;
 public class DayConfig : ScriptableObject
 {
     [SerializeField]
-    private int bookCount;
+    private List<GenreCounts> genreBookCounts;
 
-    public int BookCount { get { return bookCount; } }
+    public List<GenreCounts> GenreBookCounts { get { return genreBookCounts; } }
+}
+
+[System.Serializable]
+public class GenreCounts
+{
+    public Genre genre;
+    public int count;
 }

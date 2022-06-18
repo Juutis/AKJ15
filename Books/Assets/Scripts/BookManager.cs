@@ -29,16 +29,25 @@ public class BookManager : MonoBehaviour
         {
             Books = new List<Book>();
         }
-
-        for (int i = 0; i < bookCount; i++)
-        {
-            // Books.Add(new Book(Genre.History));
-        }
     }
 
     void Update()
     {
         
+    }
+    
+    public void InitializeDay(DayConfig dayConfig)
+    {
+        bookCount = 0;
+        Books = new List<Book>();
+        dayConfig.GenreBookCounts.ForEach(x =>
+        {
+            for (int i = 0; i < x.count; i++)
+            {
+                Books.Add(new Book(Genre.History));
+                bookCount++;
+            }
+        });
     }
 
     public BookConfig GetConfig()

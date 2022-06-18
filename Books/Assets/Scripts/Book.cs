@@ -6,13 +6,13 @@ using Serializable = System.SerializableAttribute;
 public class Book
 {
     private int pageCount;
-    private Genre genre;
+    public Genre Genre { get; set; }
 
     public List<BookPage> Pages { get; set; }
 
     public Book(Genre genre)
     {
-        this.genre = genre;
+        Genre = genre;
         pageCount = BookManager.main.GetConfig().PageCount;
         Pages = new List<BookPage>();
         for (int i = 0; i < pageCount; i++)
