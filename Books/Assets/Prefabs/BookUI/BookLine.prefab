@@ -568,8 +568,8 @@ MonoBehaviour:
   randomWord: 1
   lineLength: 40
   uiText: {fileID: 158786575}
-  minWordLength: 2
-  maxWordLength: 10
+  minWordLength: 1
+  maxWordLength: 8
 --- !u!1 &8798428442863039676
 GameObject:
   m_ObjectHideFlags: 0

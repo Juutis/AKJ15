@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e661a6c3e0d8c2a4a8caf00824790b94, type: 3}
+  m_Name: BookConfig
+  m_EditorClassIdentifier: 
+  pageCount: 6
+  lineCharCount: 40
+  minWordLength: 1
+  maxWordLength: 8
