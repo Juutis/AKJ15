@@ -15,7 +15,16 @@ public class BookManager : MonoBehaviour
 
     public List<Book> Books { get; set; }
 
+    private List<Book> booksToSpawn = new List<Book>();
+
     public Dictionary<Genre, List<string>> GenreText { get; set; }
+
+    [SerializeField]
+    private BookSpawner spawner;
+
+    private DayConfig dayConfig;
+
+    private float initialSpawnDelay = 5.0f;
 
     private void Awake()
     {
@@ -38,16 +47,19 @@ public class BookManager : MonoBehaviour
     
     public void InitializeDay(DayConfig dayConfig)
     {
+        this.dayConfig = dayConfig;
         bookCount = 0;
         Books = new List<Book>();
         dayConfig.GenreBookCounts.ForEach(x =>
         {
             for (int i = 0; i < x.count; i++)
             {
-                Books.Add(new Book(Genre.History));
+                Books.Add(new Book(x.genre));
                 bookCount++;
             }
         });
+        booksToSpawn.AddRange(Books);
+        Invoke("SpawnBook", initialSpawnDelay);
     }
 
     public BookConfig GetConfig()
@@ -59,6 +71,19 @@ public class BookManager : MonoBehaviour
     {
         List<string> strings = GenreText[genre];
         return strings[Random.Range(0, strings.Count)];
+    }
+
+    private void SpawnBook()
+    {
+        if (booksToSpawn.Count == 0) 
+        {
+            return;
+        }
+        var i = Random.Range(0, booksToSpawn.Count);
+        var book = booksToSpawn[i];
+        booksToSpawn.RemoveAt(i);
+        spawner.SpawnBook(book);
+        Invoke("SpawnBook", Random.Range(dayConfig.MinBookSpawnInterval, dayConfig.MaxBookSpawnInterval));
     }
 
     private void InitializeGenres()
