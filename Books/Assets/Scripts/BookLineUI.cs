@@ -1,32 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
-using Serializable = System.SerializableAttribute;
+using UnityEngine.UI;
 
-[Serializable]
-public class BookLine
+public class BookLineUI : MonoBehaviour
 {
     private List<string> alphabetUpper = new List<string>() { "Æ", "Σ", "Ω", "Ц", "З", "Я", "I", "Y", "E", "Ջ", "Ի", "Ԓ", "Ϩ", "Ϫ", "Є", "Э", "Ө", "Մ", "Ӯ", "Ӑ", "Ծ", "Ӵ", "Ж", "Λ", "Ҁ" };
     private List<string> alphabetLower = new List<string>() { "æ", "σ", "ω", "ц", "з", "я", "i", "y", "e", "ջ", "ի", "ԓ", "ϩ", "ϫ", "є", "э", "ө", "մ", "ӯ", "ӑ", "ծ", "ӵ", "ж", "λ", "ҁ" };
+    private string line;
 
-    private int lineLength = 40; // TODO: move to config
+    [SerializeField]
+    private bool randomWord;
+
+    [SerializeField]
+    private int lineLength;
+
+    [SerializeField]
+    private Text uiText;
+
+    [SerializeField]
     private int minWordLength;
+
+    [SerializeField]
     private int maxWordLength;
 
-    public bool IsRandom { get; set; }
-    public string Text { get; set; }
-
-    public BookLine(bool isRandom = true)
+    // Start is called before the first frame update
+    void Start()
     {
-        Text = "";
-        IsRandom = isRandom;
-        if (isRandom)
+        if (randomWord)
         {
-            GenerateRandomLine();
+            GenerateRandomWord();
+        }
+        else
+        {
+            uiText.text = "This is a hotspot! :O";
+            uiText.color = new Color(0, 0, 0);
         }
     }
 
-    private void GenerateRandomLine()
+    private void GenerateRandomWord()
     {
         int charsLeft = lineLength;
         bool firstWord = true;
@@ -45,7 +58,15 @@ public class BookLine
             }
 
             word.Append(" ");
-            Text += word;
+            line += word;
         }
+
+        uiText.text = line;
+        uiText.color = new Color(0.25f, 0.25f, 0.25f);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
     }
 }

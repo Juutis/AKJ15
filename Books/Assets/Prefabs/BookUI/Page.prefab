@@ -1373,14 +1373,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 8895976321930453312}
     m_Modifications:
-    - target: {fileID: 3123485139065624013, guid: 5e05b74b66350b742bce3ea98613b860, type: 3}
-      propertyPath: maxWordLength
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3123485139065624013, guid: 5e05b74b66350b742bce3ea98613b860, type: 3}
-      propertyPath: minWordLength
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7227180637148404979, guid: 5e05b74b66350b742bce3ea98613b860, type: 3}
       propertyPath: m_Name
       value: BookLine
