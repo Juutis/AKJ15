@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     public float DropBook(DropZone zone, Book book)
     {
-        float score = 0;
+        int score = 0;
         if (correctZones[zone].Contains(book.Genre))
         {
             currentStreak++;
