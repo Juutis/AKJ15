@@ -11,13 +11,16 @@ public class PageRenderer : MonoBehaviour
 
     private Camera cam;
 
+    private BookPage page;
+
     // Start is called before the first frame update
     void Start()
     {
     }
 
-    public void Initialize()
+    public void Initialize(BookPage page)
     {
+        this.page = page;
         cam = GetComponentInChildren<Camera>();
 
         var renderTexture = Instantiate(renderTextureTemplate);

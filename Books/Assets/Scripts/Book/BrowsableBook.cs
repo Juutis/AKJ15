@@ -17,25 +17,18 @@ public class BrowsableBook : MonoBehaviour
 
     private int currentPage = 0;
 
+    [SerializeField]
+    private Transform pageContainer;
     
     public List<Texture> testTextures;
+
+    private Book book;
 
     // Start is called before the first frame update
     void Start()
     {
         bookAnim = GetComponentInChildren<BookAnimator>();
-
-        for (var i = 0; i < 10; i++)
-        {
-            var pageRenderer = Instantiate(pageRendererPrefab);
-            pageRenderer.Initialize();
-            pageRenderer.transform.position = transform.position + new Vector3(-2.5f + 0.5f * i, 0.0f , -5.0f);
-            var page = new BrowsableBookPage();
-            page.Texture = pageRenderer.Texture;
-            pages.Add(page);
-        }
-
-        InitializeBook();
+        InitializeBook(new Book());
     }
 
     // Update is called once per frame
@@ -51,8 +44,20 @@ public class BrowsableBook : MonoBehaviour
         }
     }
 
-    public void InitializeBook()
+    public void InitializeBook(Book book)
     {
+        this.book = book;
+        var pageNumber = 0;
+        pages = book.Pages.Select(it => {
+            var pageRenderer = Instantiate(pageRendererPrefab, pageContainer);
+            pageRenderer.Initialize(it);
+            pageRenderer.transform.localPosition = new Vector3(pageNumber * 10.0f, 0, 0);
+            var page = new BrowsableBookPage(it);
+            page.Texture = pageRenderer.Texture;
+            pageNumber++;
+            return page;
+        }).ToList();
+
         currentPage = 0;
         setLeftStaticPage(0);
         setLeftFlippingPage(0);
@@ -128,6 +133,12 @@ public class BrowsableBook : MonoBehaviour
     private class BrowsableBookPage
     {
         public Texture Texture;
+        public BookPage page;
+
+        public BrowsableBookPage(BookPage page)
+        {
+            this.page = page;
+        }
     }
 
 }
