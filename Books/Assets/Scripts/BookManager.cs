@@ -6,6 +6,10 @@ public class BookManager : MonoBehaviour
 {
     public static BookManager main;
 
+    [SerializeField]
+    private BookConfig config;
+
+    [SerializeField]
     private int bookCount = 3;
     public List<Book> Books { get; set; }
 
@@ -30,5 +34,10 @@ public class BookManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public BookConfig GetConfig()
+    {
+        return config;
     }
 }

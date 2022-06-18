@@ -9,7 +9,7 @@ public class BookLine
     private List<string> alphabetUpper = new List<string>() { "Æ", "Σ", "Ω", "Ц", "З", "Я", "I", "Y", "E", "Ջ", "Ի", "Ԓ", "Ϩ", "Ϫ", "Є", "Э", "Ө", "Մ", "Ӯ", "Ӑ", "Ծ", "Ӵ", "Ж", "Λ", "Ҁ" };
     private List<string> alphabetLower = new List<string>() { "æ", "σ", "ω", "ц", "з", "я", "i", "y", "e", "ջ", "ի", "ԓ", "ϩ", "ϫ", "є", "э", "ө", "մ", "ӯ", "ӑ", "ծ", "ӵ", "ж", "λ", "ҁ" };
 
-    private int lineLength = 40; // TODO: move to config
+    private int lineLength;
     private int minWordLength;
     private int maxWordLength;
 
@@ -18,6 +18,11 @@ public class BookLine
 
     public BookLine(bool isRandom = true)
     {
+        BookConfig config = BookManager.main.GetConfig();
+        lineLength = config.LineCharCount;
+        maxWordLength = config.MaxWordLength;
+        minWordLength = config.MinWordLength;
+
         Text = "";
         IsRandom = isRandom;
         if (isRandom)
