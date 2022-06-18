@@ -8,7 +8,7 @@ public class DraggableObject : MonoBehaviour
     private bool snapping = false;
     private float snapSpeed = 10.0f;
 
-    private ClickableObject clickable;
+    private DraggingTarget targetDropPoint = null;
 
     public void OnBeginDrag()
     {
@@ -38,6 +38,7 @@ public class DraggableObject : MonoBehaviour
             else
             {
                 snapPosition = target.transform.position;
+                targetDropPoint = target;
             }
             snapping = true;
         }
@@ -59,6 +60,30 @@ public class DraggableObject : MonoBehaviour
         if (snapping)
         {
             transform.position = Vector2.MoveTowards(transform.position, snapPosition, Time.deltaTime * snapSpeed);
+        }
+
+        if (targetDropPoint != null && Vector2.Distance(transform.position, snapPosition) < 0.1f)
+        {
+            var book = GetComponent<ClickableBook>();
+            if (book != null) 
+            {
+                DropZone zone = DropZone.Save;
+                switch (targetDropPoint.TargetType)
+                {
+                    case DraggingTarget.Type.SAVE:
+                        zone = DropZone.Save;
+                        break;
+                    case DraggingTarget.Type.BURN:
+                        zone = DropZone.Burn;
+                        break;
+                    case DraggingTarget.Type.BAG:
+                        zone = DropZone.Bag;
+                        break;
+                }
+                GameManager.main.DropBook(zone, book.book);
+            }
+            
+            Destroy(gameObject);
         }
     }
 }

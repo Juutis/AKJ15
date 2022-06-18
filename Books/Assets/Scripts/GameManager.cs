@@ -88,8 +88,6 @@ public class GameManager : MonoBehaviour
             currentStreak = 0;
         }
 
-        // TODO: Delete book here?
-
         currentDayScore += score;
         totalRunScore += score;
         return score;
