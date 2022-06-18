@@ -19,12 +19,3 @@ public class Book
         }
     }
 }
-
-public enum Genre
-{
-    Rebel,
-    GenericProse,
-    Vulgar,
-    HardScience,
-    SoftScience
-}
