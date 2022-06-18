@@ -15,6 +15,10 @@ public class DraggableObject : MonoBehaviour
 
     public void OnBeginDrag()
     {
+        if (BrowsableBook.main.IsOpen) 
+        {
+            return;
+        }
         if (!snapping)
         {
             snapPosition = transform.position;
@@ -26,6 +30,10 @@ public class DraggableObject : MonoBehaviour
 
     public void OnDrag()
     {
+        if (BrowsableBook.main.IsOpen) 
+        {
+            return;
+        }
         var mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = (Vector2)mouseWorldPos + dragOffset;
     }
