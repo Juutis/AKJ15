@@ -20,15 +20,15 @@ public class GameManager : MonoBehaviour
     private DayState gameState = DayState.Start;
     private float dayStarted;
 
-    private float totalRunScore = 0;
-    private float currentDayScore = 0;
+    private int totalRunScore = 0;
+    private int currentDayScore = 0;
     private int currentStreak = 0;
     private int correctlyPlacedBooksToday = 0;
 
     private Dictionary<DropZone, List<Genre>> correctZones = new()
     {
         { DropZone.Bag, new List<Genre>() { Genre.Rebel } },
-        { DropZone.Burn, new List<Genre>() { Genre.Rebel, Genre.SoftScience, Genre.SoftScience, Genre.History } },
+        { DropZone.Burn, new List<Genre>() { Genre.Rebel, Genre.SoftScience, Genre.SoftScience, Genre.History, Genre.Vulgar } },
         { DropZone.Save, new List<Genre>() { Genre.GenericProse, Genre.HardScience } }
     };
 
@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         if (correctZones[zone].Contains(book.Genre))
         {
             currentStreak++;
-            score = 1 + 0.1f * currentStreak;
+            score = 10 + currentStreak;
             correctlyPlacedBooksToday++;
         }
         else
