@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ClickableBook : ClickableObject
 {
-    private Book book;
+    public Book book { get; private set; }
     override public void OnClick()
     {
         BrowsableBook.main.OpenBook(book);

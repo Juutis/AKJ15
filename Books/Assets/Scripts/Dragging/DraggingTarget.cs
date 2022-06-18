@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DraggingTarget : MonoBehaviour
 {
-    public Type TargetType = Type.APPROVEDSLOT;
+    public Type TargetType = Type.SAVE;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +26,8 @@ public class DraggingTarget : MonoBehaviour
     public enum Type
     {
         TABLE,
-        APPROVEDSLOT,
-        BURNER,
-        SECRETBAG
+        SAVE,
+        BURN,
+        BAG
     }
 }
