@@ -8,7 +8,6 @@ public class ClickableButton : ClickableObject
 
     public override void OnClick()
     {
-        Debug.Log("CLICK!");
         onClickEvent.Invoke();
     }
 
