@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == DayState.Start)
         {
+            FeedbackUI.SetActive(false);
             DayStartUI.gameObject.SetActive(true);
             if (Input.GetKey(KeyCode.Space))
             {
@@ -82,11 +83,22 @@ public class GameManager : MonoBehaviour
             score = 1 + 0.1f * currentStreak;
             correctlyPlacedBooksToday++;
         }
+        else
+        {
+            currentStreak = 0;
+        }
 
         // TODO: Delete book here?
 
         currentDayScore += score;
+        totalRunScore += score;
         return score;
+    }
+
+    public void UpdateFeedback(FeedbackUI feedbackUI)
+    {
+        int totalBooksCount = BookManager.main.Books.Count;
+        feedbackUI.UpdateScores(totalRunScore, currentDayScore, totalBooksCount, correctlyPlacedBooksToday, currentStreak);
     }
 
     private void InitializeDay()
@@ -95,7 +107,6 @@ public class GameManager : MonoBehaviour
         BookManager.main.InitializeDay(dayConfigs[currentDay]);
         currentDayScore = 0;
         correctlyPlacedBooksToday = 0;
-        // currentStreak = 0; // Reset streak?
     }
 
     private IEnumerator FadeOutImage(Image image, Color c1, Color c2)
