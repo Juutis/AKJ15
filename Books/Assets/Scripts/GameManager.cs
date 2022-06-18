@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private float totalRunScore = 0;
     private float currentDayScore = 0;
     private int currentStreak = 0;
+    private int correctlyPlacedBooksToday = 0;
 
     private Dictionary<DropZone, List<Genre>> correctZones = new()
     {
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
         {
             currentStreak++;
             score = 1 + 0.1f * currentStreak;
+            correctlyPlacedBooksToday++;
         }
 
         // TODO: Delete book here?
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
         dayStarted = Time.time;
         BookManager.main.InitializeDay(dayConfigs[currentDay]);
         currentDayScore = 0;
+        correctlyPlacedBooksToday = 0;
         // currentStreak = 0; // Reset streak?
     }
 
