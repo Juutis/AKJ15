@@ -5,6 +5,8 @@ using System.Linq;
 
 public class BrowsableBook : MonoBehaviour
 {
+    public static BrowsableBook main;
+
     private BookAnimator bookAnim;
 
     private List<BrowsableBookPage> pages = new List<BrowsableBookPage>();
@@ -19,15 +21,22 @@ public class BrowsableBook : MonoBehaviour
 
     [SerializeField]
     private Transform pageContainer;
-    
-    public List<Texture> testTextures;
 
+    [SerializeField]
+    private GameObject bookContainer;
+    
     private Book book;
+
+    void Awake()
+    {
+        main = this;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         bookAnim = GetComponentInChildren<BookAnimator>();
+        CloseBook();
     }
 
     // Update is called once per frame
@@ -45,6 +54,17 @@ public class BrowsableBook : MonoBehaviour
         {
             FlipToNextPage();
         }
+    }
+
+    public void OpenBook(Book book)
+    {
+        InitializeBook(book);
+        bookContainer.SetActive(true);
+    }
+
+    public void CloseBook()
+    {
+        bookContainer.SetActive(false);
     }
 
     public void InitializeBook(Book book)
