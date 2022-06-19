@@ -36,10 +36,10 @@ public class MouseHandler : MonoBehaviour
             .Where(it => it != null)
             .FirstOrDefault();
 
-        var clickables = hoverHits.Select(it => it.transform.GetComponent<ClickableObject>())
+        var clickables = hoverHits.OrderBy(x => x.distance).Select(it => it.transform.GetComponent<ClickableObject>())
             .Where(it => it != null);
         
-        if (!clickables.Contains(currentClickable))
+        if (clickables.FirstOrDefault() != currentClickable)
         {
             currentClickable = clickables.FirstOrDefault();
         }
