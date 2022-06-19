@@ -161,6 +161,10 @@ public class GameManager : MonoBehaviour
             {
                 otherBooksDeliveredToday++;
             }
+            if (zone == DropZone.Save)
+            {
+                incorrectlySavedBooksToday++;
+            }
         }
 
         handledBooksToday++;
