@@ -18,7 +18,7 @@ public class ReputationManager
 
     public bool IsVictoryByRebels()
     {
-        return RebelReputation > 10;
+        return RebelReputation > 6;
     }
 
     public void UpdateStateReputation(int totalBooksForTheDay, int totalBooksHandled, int correctlySavedBooks, int incorrectlySavedBooks)
@@ -97,17 +97,17 @@ public class ReputationManager
 
     public string GetRebelReputationText()
     {
-        if (RebelReputation > 10)
+        if (RebelReputation > 6)
         {
             return "Viva la revolución! Thanks to the books you've delivered we've raised enough awareness to start overthrowing the evil regime!";
         }
-        else if (RebelReputation > 5)
+        else if (RebelReputation > 3)
         {
             return "The books you've delivered are really helping our cause.";
         }
         else if (RebelReputation > 0)
         {
-            return "";
+            return "More books tomorrow, aye?";
         }
         else if (RebelReputation > -5)
         {
