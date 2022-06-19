@@ -5,6 +5,7 @@ using System.Linq;
 
 public class BrowsableBook : MonoBehaviour
 {
+
     public static BrowsableBook main;
 
     private BookAnimator bookAnim;
@@ -32,6 +33,15 @@ public class BrowsableBook : MonoBehaviour
 
     public bool IsOpen { get; private set; } = false;
 
+    private AudioSource audioSrc;
+
+    [SerializeField]
+    private AudioClip openSound;
+    [SerializeField]
+    private AudioClip closeSound;
+    [SerializeField]
+    private AudioClip flipPageSound;
+
     void Awake()
     {
         main = this;
@@ -41,7 +51,8 @@ public class BrowsableBook : MonoBehaviour
     void Start()
     {
         bookAnim = GetComponentInChildren<BookAnimator>();
-        CloseBook();
+        audioSrc = GetComponent<AudioSource>();
+        CloseBook(true);
     }
 
     // Update is called once per frame
@@ -67,12 +78,23 @@ public class BrowsableBook : MonoBehaviour
         bookContainer.SetActive(true);
         IsOpen = true;
         coverMaterial.color = coverColor;
+
+        audioSrc.PlayOneShot(openSound);
     }
 
     public void CloseBook()
     {
+        CloseBook(false);
+    }
+
+    public void CloseBook(bool skipSound)
+    {
         bookContainer.SetActive(false);
         IsOpen = false;
+
+        if (!skipSound) {
+            audioSrc.PlayOneShot(closeSound);
+        }
     }
 
     public void InitializeBook(Book book)
@@ -103,6 +125,7 @@ public class BrowsableBook : MonoBehaviour
             currentPage += 2;
             bookAnim.FlipToNextPage();
             setLeftFlippingPage(currentPage);
+            audioSrc.PlayOneShot(flipPageSound);
         }
     }
 
@@ -114,6 +137,7 @@ public class BrowsableBook : MonoBehaviour
             currentPage -= 2;
             bookAnim.FlipToPreviousPage();
             setRightFlippingPage(currentPage+1);
+            audioSrc.PlayOneShot(flipPageSound);
         }
     }
 

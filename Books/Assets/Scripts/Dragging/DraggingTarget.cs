@@ -12,14 +12,20 @@ public class DraggingTarget : MonoBehaviour
     [SerializeField]
     private Sprite hoverSprite;
 
-    private int hoverFrameCounter = 0;
+    private int hoverFrameCounter = 10;
 
     private SpriteRenderer rend;
+    private AudioSource audioSrc;
+
+    [SerializeField]
+    private AudioClip openSound;
 
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponentInChildren<SpriteRenderer>();
+        audioSrc = GetComponent<AudioSource>();
+        rend.sprite = sprite;
     }
 
     // Update is called once per frame
@@ -31,11 +37,19 @@ public class DraggingTarget : MonoBehaviour
         }
         if (hoverFrameCounter < 2)
         {
-            rend.sprite = hoverSprite;
+            if (rend.sprite != hoverSprite)
+            {
+                audioSrc.PlayOneShot(openSound);
+                rend.sprite = hoverSprite;
+            }
         }
         else
         {
-            rend.sprite = sprite;
+            if (rend.sprite != sprite)
+            {
+                audioSrc.PlayOneShot(openSound);
+                rend.sprite = sprite;
+            }
         }
         hoverFrameCounter++;
     }

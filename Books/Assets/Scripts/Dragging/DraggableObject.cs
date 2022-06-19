@@ -12,6 +12,10 @@ public class DraggableObject : MonoBehaviour
 
     [SerializeField]
     private ScorePopUp scorePopUp;
+    private AudioSource audioSrc;
+
+    [SerializeField]
+    private AudioClip dragSound;
 
     public void OnBeginDrag()
     {
@@ -26,6 +30,7 @@ public class DraggableObject : MonoBehaviour
         snapping = false;
         var mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         dragOffset = transform.position - mouseWorldPos;
+        audioSrc.PlayOneShot(dragSound);
     }
 
     public void OnDrag()
@@ -40,6 +45,10 @@ public class DraggableObject : MonoBehaviour
 
     public void OnEndDrag(DraggingTarget target)
     {
+        if (BrowsableBook.main.IsOpen) 
+        {
+            return;
+        }
         if (target != null) 
         {
             if (target.TargetType == DraggingTarget.Type.TABLE)
@@ -57,12 +66,14 @@ public class DraggableObject : MonoBehaviour
         {
             snapping = true;
         }
+        audioSrc.PlayOneShot(dragSound);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         mainCam = Camera.main;
+        audioSrc = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
