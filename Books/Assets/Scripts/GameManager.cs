@@ -208,6 +208,8 @@ public class GameManager : MonoBehaviour
         currentDay++;
         if (currentDay < dayConfigs.Count)
         {
+            DayStartUI.color = Color.black;
+            DayStartText.text = "Day " + (currentDay + 1);
             //InitializeDay();
             gameState = DayState.Start;
             BrowsableBook.main.CloseBook(true);
@@ -233,7 +235,6 @@ public class GameManager : MonoBehaviour
         rebelBooksDeliveredToday = 0;
         otherBooksDeliveredToday = 0;
         incorrectlySavedBooksToday = 0;
-        DayStartUI.color = Color.black;
         DayStartText.text = "Day " + (currentDay + 1);
 
         if (currentDay == 0)
