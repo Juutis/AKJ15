@@ -289,6 +289,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 0262933c4088eb04cafbf89dd7bf0e28, type: 2}
   - {fileID: 2100000, guid: 89a119a163e00a24cbbc70f4e9dad119, type: 2}
   pageRendererPrefab: {fileID: 8015185072726973333, guid: 1869295fe8960ab478051da250c90cdc, type: 3}
+  coverMaterial: {fileID: 2100000, guid: a2bc594fc4da9ac4c836d28e8d51feef, type: 2}
   pageContainer: {fileID: 6004704694098908851}
   bookContainer: {fileID: 2375792721379524004}
 --- !u!1 &3342296082947654056

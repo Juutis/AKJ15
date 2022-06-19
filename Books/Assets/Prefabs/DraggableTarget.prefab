@@ -73,6 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetType: 0
+  sprite: {fileID: 21300000, guid: 4f60d72f5da8c2b4c8b2155d7e77c88c, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 3b6a976ca18808a4b95404665d849acd, type: 3}
 --- !u!1 &1734610195880431815
 GameObject:
   m_ObjectHideFlags: 0
@@ -89,7 +91,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7971913114120685526
 Transform:
   m_ObjectHideFlags: 0
@@ -146,8 +148,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.078704715, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4f60d72f5da8c2b4c8b2155d7e77c88c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
