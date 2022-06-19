@@ -99,6 +99,11 @@ public class BrowsableBook : MonoBehaviour
 
     public void InitializeBook(Book book)
     {
+        foreach (Transform t in pageContainer)
+        {
+            Destroy(t.gameObject);
+        }
+
         this.book = book;
         var pageNumber = 0;
         pages = book.Pages.Select(it => {
