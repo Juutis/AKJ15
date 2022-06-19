@@ -212,6 +212,8 @@ public class GameManager : MonoBehaviour
         {
             InitializeDay();
             gameState = DayState.Start;
+            BrowsableBook.main.CloseBook(true);
+            BookSpawner.main.ClearBooks();
         }
         else
         {

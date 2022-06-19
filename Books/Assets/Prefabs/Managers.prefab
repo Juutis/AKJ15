@@ -175,6 +175,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38bffee1c4466b349914dc89f12bb8b5, type: 2}
   - {fileID: 11400000, guid: ecec0461b822b634b9abdebe3e11638f, type: 2}
   RulesHilight: {fileID: 4534584781213486420}
+  Bag: {fileID: 0}
 --- !u!82 &8010446682587893450
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1234,6 +1235,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4772323627829176988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3363316450151604185}
+  m_Layer: 0
+  m_Name: BookContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3363316450151604185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772323627829176988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8414658597305417698}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4997265368194425099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,6 +1545,7 @@ MonoBehaviour:
     y: -0.72
     width: 1.73
     height: 0.4
+  bookContainer: {fileID: 3363316450151604185}
 --- !u!1 &5605886947884086619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1628,6 +1661,7 @@ Transform:
   - {fileID: 4007153239792659013}
   - {fileID: 866732494580499645}
   - {fileID: 7446547577397294372}
+  - {fileID: 3363316450151604185}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
