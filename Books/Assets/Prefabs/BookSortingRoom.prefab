@@ -855,9 +855,18 @@ PrefabInstance:
       propertyPath: hoverSprite
       value: 
       objectReference: {fileID: 21300000, guid: 5f3e3859aa3028443b3505d96d96add4, type: 3}
+    - target: {fileID: 8596853361907941100, guid: e9e371fe5eeccf84383e861838924316, type: 3}
+      propertyPath: openParticles
+      value: 
+      objectReference: {fileID: 4408192471660297648}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e9e371fe5eeccf84383e861838924316, type: 3}
+--- !u!198 &4408192471660297648 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5236193063488404842, guid: e9e371fe5eeccf84383e861838924316, type: 3}
+  m_PrefabInstance: {fileID: 8468942596277518554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7774569091592948027 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2189711553726171617, guid: e9e371fe5eeccf84383e861838924316, type: 3}

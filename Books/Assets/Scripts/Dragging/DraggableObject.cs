@@ -17,6 +17,9 @@ public class DraggableObject : MonoBehaviour
     [SerializeField]
     private AudioClip dragSound;
 
+    [SerializeField]
+    private ParticleSystem burnParticles;
+
     public void OnBeginDrag()
     {
         if (BrowsableBook.main.IsOpen) 
@@ -102,6 +105,11 @@ public class DraggableObject : MonoBehaviour
                         zone = DropZone.Save;
                         break;
                     case DraggingTarget.Type.BURN:
+                        if (burnParticles != null)
+                        {
+                            burnParticles.Play();
+                            burnParticles.transform.parent = null;
+                        }
                         zone = DropZone.Burn;
                         break;
                     case DraggingTarget.Type.BAG:

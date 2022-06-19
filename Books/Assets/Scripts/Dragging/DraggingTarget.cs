@@ -24,6 +24,9 @@ public class DraggingTarget : MonoBehaviour
     private float minSoundDelay = 0.2f;
     private bool canPlaySound = true;
 
+    [SerializeField]
+    private ParticleSystem openParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,10 @@ public class DraggingTarget : MonoBehaviour
             {
                 if (canPlaySound) 
                 {
+                    if (openParticles != null)
+                    {
+                        openParticles.Play();
+                    }
                     audioSrc.PlayOneShot(openSound);
                     canPlaySound = false;
                     Invoke("ResetSound", minSoundDelay);
@@ -56,8 +63,12 @@ public class DraggingTarget : MonoBehaviour
         {
             if (rend.sprite != sprite)
             {
-                if (canPlaySound) 
+                if (canPlaySound)
                 {
+                    if (openParticles != null)
+                    {
+                        openParticles.Stop();
+                    }
                     audioSrc.PlayOneShot(openSound);
                     canPlaySound = false;
                     Invoke("ResetSound", minSoundDelay);
