@@ -91,12 +91,9 @@ public class GameManager : MonoBehaviour
         else
         {
             firstDay = false;
-            if (Input.GetKey(KeyCode.Return))
-            {
-                gameState = DayState.Feedback;
-            }
             if (Time.time > dayStarted + config.DayLength)
             {
+                handleReputationChangeAfterDay();
                 gameState = DayState.Feedback;
             }
         }
