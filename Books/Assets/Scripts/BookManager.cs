@@ -95,5 +95,6 @@ public class BookManager : MonoBehaviour
         GenreText.Add(Genre.SoftScience, SoftScienceTexts.Texts);
         GenreText.Add(Genre.Vulgar, VulgarTexts.Texts);
         GenreText.Add(Genre.History, HistoryTexts.Texts);
+        GenreText.Add(Genre.Propaganda, GovernmentPropagandaTexts.Texts);
     }
 }

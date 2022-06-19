@@ -5,5 +5,6 @@
     Vulgar,
     HardScience,
     SoftScience,
-    History
+    History,
+    Propaganda
 }

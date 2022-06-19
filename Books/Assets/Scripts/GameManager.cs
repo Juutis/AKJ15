@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         { DropZone.Bag, new List<Genre>() { Genre.Rebel } },
         { DropZone.Burn, new List<Genre>() { Genre.Rebel, Genre.SoftScience, Genre.SoftScience, Genre.History, Genre.Vulgar } },
-        { DropZone.Save, new List<Genre>() { Genre.GenericProse, Genre.HardScience } }
+        { DropZone.Save, new List<Genre>() { Genre.GenericProse, Genre.HardScience, Genre.Propaganda } }
     };
 
     private void Awake()
