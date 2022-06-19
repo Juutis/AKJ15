@@ -20,6 +20,10 @@ public class DraggingTarget : MonoBehaviour
     [SerializeField]
     private AudioClip openSound;
 
+    [SerializeField]
+    private float minSoundDelay = 0.2f;
+    private bool canPlaySound = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +43,12 @@ public class DraggingTarget : MonoBehaviour
         {
             if (rend.sprite != hoverSprite)
             {
-                audioSrc.PlayOneShot(openSound);
+                if (canPlaySound) 
+                {
+                    audioSrc.PlayOneShot(openSound);
+                    canPlaySound = false;
+                    Invoke("ResetSound", minSoundDelay);
+                }
                 rend.sprite = hoverSprite;
             }
         }
@@ -47,11 +56,21 @@ public class DraggingTarget : MonoBehaviour
         {
             if (rend.sprite != sprite)
             {
-                audioSrc.PlayOneShot(openSound);
+                if (canPlaySound) 
+                {
+                    audioSrc.PlayOneShot(openSound);
+                    canPlaySound = false;
+                    Invoke("ResetSound", minSoundDelay);
+                }
                 rend.sprite = sprite;
             }
         }
         hoverFrameCounter++;
+    }
+
+    public void ResetSound()
+    {
+        canPlaySound = true;
     }
 
     public void OnHover()
