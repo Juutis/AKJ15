@@ -9,14 +9,20 @@ public class ReputationManager
     public void UpdateStateReputation(int totalBooksForTheDay, int totalBooksHandled, int correctlySavedBooks, int incorrectlySavedBooks)
     {
         int booksNotHandled = totalBooksForTheDay - totalBooksHandled;
-        StateReputation -= booksNotHandled;
-        StateReputation -= 2 * incorrectlySavedBooks;
-        StateReputation += correctlySavedBooks / 2;
+        var reputationChange = 0;
+        reputationChange -= booksNotHandled;
+        reputationChange -= 2 * incorrectlySavedBooks;
+        reputationChange += correctlySavedBooks / 2;
+        reputationChange = Mathf.Clamp(reputationChange, -5, 5);
+        StateReputation += reputationChange;
     }
 
     public void UpdateRebelReputation(int totalAvailableRebelBooks, int rebelBooksDelivered)
     {
-        RebelReputation += rebelBooksDelivered - 2;
+        var reputationChange = 0;
+        reputationChange += rebelBooksDelivered - 2;
+        reputationChange = Mathf.Clamp(reputationChange, -5, 5);
+        StateReputation += reputationChange;
     }
 
     public string GetStateReputationText()
