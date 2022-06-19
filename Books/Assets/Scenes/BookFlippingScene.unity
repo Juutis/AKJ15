@@ -689,6 +689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BookModel
       objectReference: {fileID: 0}
+    - target: {fileID: 3063552800690283553, guid: e7af6968e27e0c7498becdb0f1ce0016, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: e7af6968e27e0c7498becdb0f1ce0016, type: 3}
