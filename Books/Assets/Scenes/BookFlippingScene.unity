@@ -163,6 +163,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1943426565, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2035745522, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -459,6 +463,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -450
       objectReference: {fileID: 0}
+    - target: {fileID: 8010446682587893450, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8414658597305417698, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -687,6 +695,10 @@ PrefabInstance:
     - target: {fileID: 3063552800690283553, guid: e7af6968e27e0c7498becdb0f1ce0016, type: 3}
       propertyPath: m_Name
       value: BookModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3063552800690283553, guid: e7af6968e27e0c7498becdb0f1ce0016, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

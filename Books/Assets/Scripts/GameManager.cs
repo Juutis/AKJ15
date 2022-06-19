@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour
         return dayConfigs[currentDay];
     }
 
+    public DayState GetState()
+    {
+        return gameState;
+    }
+
     public int DropBook(DropZone zone, Book book)
     {
         int score = 0;
