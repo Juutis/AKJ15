@@ -25,7 +25,7 @@ public class BookLineUI : MonoBehaviour
         uiText.text = text;
         if (random)
         {
-            uiText.color = new Color(0.33f, 0.33f, 0.33f);
+            uiText.color = new Color(0.9765625f, 0.6171875f, 0.3984375f);
         }
         else
         {
