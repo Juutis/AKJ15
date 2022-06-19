@@ -6,6 +6,21 @@ public class ReputationManager
 {
     public int StateReputation = 0, RebelReputation = 0;
 
+    public bool IsGameOverByRebels()
+    {
+        return RebelReputation <= -10;
+    }
+
+    public bool IsGameOverByState()
+    {
+        return StateReputation <= -10;
+    }
+
+    public bool IsVictoryByRebels()
+    {
+        return RebelReputation > 10;
+    }
+
     public void UpdateStateReputation(int totalBooksForTheDay, int totalBooksHandled, int correctlySavedBooks, int incorrectlySavedBooks)
     {
         int booksNotHandled = totalBooksForTheDay - totalBooksHandled;
@@ -81,7 +96,7 @@ public class ReputationManager
     {
         if (RebelReputation > 10)
         {
-            return "Revolution! Thanks to the books you've delivered we've raised enough awareness to overthrow the evil regime!";
+            return "Viva la revolución! Thanks to the books you've delivered we've raised enough awareness to start overthrowing the evil regime!";
         }
         else if (RebelReputation > 5)
         {

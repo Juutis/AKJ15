@@ -109,6 +109,32 @@ public class GameManager : MonoBehaviour
         return gameState;
     }
 
+    public EndState GetEndState()
+    {
+        if (ReputationManager.IsGameOverByState())
+        {
+            return EndState.KilledBySupervisor;
+        }
+        if (ReputationManager.IsGameOverByRebels())
+        {
+            return EndState.KilledByRebels;
+        }
+
+        if (currentDay + 1 >= dayConfigs.Count)
+        {
+            if (ReputationManager.IsVictoryByRebels())
+            {
+                return EndState.VictoryByRebels;
+            }
+            else
+            {
+                return EndState.victoryBySupervisor;
+            }
+        }
+        
+        return EndState.None;
+    }
+
     public int DropBook(DropZone zone, Book book)
     {
         int score = 0;
@@ -246,3 +272,11 @@ public enum DropZone
     Bag
 }
 
+public enum EndState
+{
+    None,
+    KilledBySupervisor,
+    KilledByRebels,
+    VictoryByRebels,
+    victoryBySupervisor
+}

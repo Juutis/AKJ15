@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FeedbackUI : MonoBehaviour
 {
@@ -33,6 +34,17 @@ public class FeedbackUI : MonoBehaviour
     private Text endOfDayText;
 
     private State status = State.NONE;
+
+    [SerializeField]
+    private GameObject gameOverBySupervisor;
+    [SerializeField]
+    private GameObject gameOverByRebels;
+    [SerializeField]
+    private GameObject victoryBySupervisor;
+    [SerializeField]
+    private GameObject victoryByRebels;
+    [SerializeField]
+    private GameObject finalScorePanel;
 
     // Start is called before the first frame update
     void Start()
@@ -89,6 +101,22 @@ public class FeedbackUI : MonoBehaviour
                 scorePanel.SetActive(false);
                 rebelIntroductionPanel.SetActive(true);
                 break;
+            case State.END:
+                endOfDayPanel.SetActive(false);
+                supervisorFeedbackPanel.SetActive(false);
+                rebelFeedbackPanel.SetActive(false);
+                scorePanel.SetActive(false);
+                rebelIntroductionPanel.SetActive(false);
+                showEndScreen();
+                break;
+            case State.FINAL_SCORE:
+                endOfDayPanel.SetActive(false);
+                supervisorFeedbackPanel.SetActive(false);
+                rebelFeedbackPanel.SetActive(false);
+                scorePanel.SetActive(false);
+                rebelIntroductionPanel.SetActive(false);
+                finalScorePanel.SetActive(true);
+                break;
         }
 
         if (Input.anyKeyDown)
@@ -109,7 +137,14 @@ public class FeedbackUI : MonoBehaviour
                     }
                     break;
                 case State.REBEL_FEEDBACK:
-                    status = State.SCORE;
+                    if (IsGameOver())
+                    {
+                        status = State.END;
+                    }
+                    else
+                    {
+                        status = State.SCORE;
+                    }
                     break;
                 case State.SCORE:
                     if (GameManager.main.currentDay == 0)
@@ -126,9 +161,40 @@ public class FeedbackUI : MonoBehaviour
                     status = State.NONE;
                     GameManager.main.StartNextDay();
                     break;
+                case State.END:
+                    status = State.FINAL_SCORE;
+                    break;
             }
         }
+        if (Input.GetKeyDown(KeyCode.R) && status == State.FINAL_SCORE)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
+
+    private bool IsGameOver()
+    {
+        return GameManager.main.GetEndState() != EndState.None;
+    }
+
+    private void showEndScreen()
+    {
+        switch (GameManager.main.GetEndState())
+        {
+            case EndState.KilledBySupervisor:
+                gameOverBySupervisor.SetActive(true);
+                break;
+            case EndState.KilledByRebels:
+                gameOverByRebels.SetActive(true);
+                break;
+            case EndState.victoryBySupervisor:
+                victoryBySupervisor.SetActive(true);
+                break;
+            case EndState.VictoryByRebels:
+                victoryByRebels.SetActive(true);
+                break;
+        }
+    } 
 
     public void TriggerEndOfDay()
     {
@@ -166,7 +232,8 @@ public class FeedbackUI : MonoBehaviour
         SUPERVISOR_FEEDBACK,
         REBEL_FEEDBACK,
         SCORE,
-        REBEL_INTRODUCTION
-
+        REBEL_INTRODUCTION,
+        FINAL_SCORE,
+        END
     }
 }
