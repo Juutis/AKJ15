@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   genreBookCounts:
   - genre: 0
-    count: 3
+    count: 2
   - genre: 1
     count: 1
   - genre: 2
-    count: 3
+    count: 2
   - genre: 3
     count: 1
   - genre: 4
@@ -26,6 +26,6 @@ MonoBehaviour:
   - genre: 5
     count: 2
   - genre: 6
-    count: 3
-  MinBookSpawnInterval: 8
-  MaxBookSpawnInterval: 10
+    count: 2
+  MinBookSpawnInterval: 11
+  MaxBookSpawnInterval: 12

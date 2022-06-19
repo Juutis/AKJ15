@@ -28,7 +28,7 @@ public class ReputationManager
         reputationChange -= booksNotHandled;
         reputationChange -= 2 * incorrectlySavedBooks;
         reputationChange += correctlySavedBooks / 2;
-        reputationChange = Mathf.Clamp(reputationChange, -5, 5);
+        reputationChange = Mathf.Clamp(reputationChange, -7, 7);
         StateReputation += reputationChange;
         Debug.Log("State reputation is now " + StateReputation);
     }
@@ -38,7 +38,7 @@ public class ReputationManager
         var reputationChange = 0;
         reputationChange += 2 * rebelBooksDelivered - 4;
         reputationChange = otherBooksDelivered / 2;
-        reputationChange = Mathf.Clamp(reputationChange, -5, 5);
+        reputationChange = Mathf.Clamp(reputationChange, -7, 7);
         RebelReputation += reputationChange;
         Debug.Log("Rebel reputation is now " + RebelReputation);
     }
