@@ -82,6 +82,10 @@ public class MouseHandler : MonoBehaviour
         if (currentDraggable != null)
         {
             currentDraggable.OnDrag();
+            if (currentDraggingTarget != null)
+            {
+                currentDraggingTarget.OnHover();
+            }
         }
     }
 }

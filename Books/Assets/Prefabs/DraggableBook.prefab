@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7061999885821002227}
   - component: {fileID: 6122570103183938051}
   m_Layer: 6
-  m_Name: Circle
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3976861916699410830}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5165616133720550407}
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.6037736, g: 0.0028479954, b: 0.13545725, a: 1}
+  m_Sprite: {fileID: -942864955, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.42666668, y: 0.42666668}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -160,3 +160,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0547ca2c877d0704d9920af51e4fc944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -942864955, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  - {fileID: -615168992, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  - {fileID: 595931184, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  - {fileID: 1125033955, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  - {fileID: -1484957201, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  - {fileID: 1119376218, guid: c4c9786eeba91c942a553b46b15b85a7, type: 3}
+  coverColors:
+  - {r: 0.1254902, g: 0, b: 0.03137255, a: 1}
+  - {r: 0.14509805, g: 0.16078432, b: 0.07450981, a: 1}
+  - {r: 0.20392159, g: 0.16862746, b: 0.07450981, a: 1}
+  - {r: 0.25882354, g: 0.03137255, b: 0.015686275, a: 1}
+  - {r: 0.09411766, g: 0.15686275, b: 0.09411766, a: 1}
+  - {r: 0.10588236, g: 0.0627451, b: 0.2784314, a: 1}

@@ -17,6 +17,9 @@ public class BrowsableBook : MonoBehaviour
     [SerializeField]
     private PageRenderer pageRendererPrefab;
 
+    [SerializeField]
+    private Material coverMaterial;
+
     private int currentPage = 0;
 
     [SerializeField]
@@ -58,11 +61,12 @@ public class BrowsableBook : MonoBehaviour
         }
     }
 
-    public void OpenBook(Book book)
+    public void OpenBook(Book book, Color coverColor)
     {
         InitializeBook(book);
         bookContainer.SetActive(true);
         IsOpen = true;
+        coverMaterial.color = coverColor;
     }
 
     public void CloseBook()

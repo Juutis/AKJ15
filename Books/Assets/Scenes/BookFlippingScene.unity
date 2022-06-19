@@ -213,19 +213,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 295221803533056472, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 295221803533056472, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 295221803533056472, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 295221803533056472, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -65
       objectReference: {fileID: 0}
     - target: {fileID: 786927992058609290, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -261,19 +261,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2162085360865873437, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2162085360865873437, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2162085360865873437, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 2162085360865873437, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -110
       objectReference: {fileID: 0}
     - target: {fileID: 3452256466693604460, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -345,19 +345,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5677375642232663020, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5677375642232663020, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5677375642232663020, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 5677375642232663020, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 5709375852352016714, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -413,19 +413,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500314198582879171, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6500314198582879171, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6500314198582879171, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 325
       objectReference: {fileID: 0}
     - target: {fileID: 6500314198582879171, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -155
       objectReference: {fileID: 0}
     - target: {fileID: 7738274714024802984, guid: 5735c2355930ad1449039c3e7c39c14b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000914cf070
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
