@@ -10,8 +10,15 @@ public class DraggableObject : MonoBehaviour
 
     private DraggingTarget targetDropPoint = null;
 
+    [SerializeField]
+    private ScorePopUp scorePopUp;
+
     public void OnBeginDrag()
     {
+        if (BrowsableBook.main.IsOpen) 
+        {
+            return;
+        }
         if (!snapping)
         {
             snapPosition = transform.position;
@@ -23,6 +30,10 @@ public class DraggableObject : MonoBehaviour
 
     public void OnDrag()
     {
+        if (BrowsableBook.main.IsOpen) 
+        {
+            return;
+        }
         var mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = (Vector2)mouseWorldPos + dragOffset;
     }
@@ -80,7 +91,10 @@ public class DraggableObject : MonoBehaviour
                         zone = DropZone.Bag;
                         break;
                 }
-                GameManager.main.DropBook(zone, book.book);
+                var score = GameManager.main.DropBook(zone, book.book);
+                var popup = Instantiate(scorePopUp);
+                popup.Initialize(score);
+                popup.transform.position = transform.position;
             }
             
             Destroy(gameObject);

@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
         return dayConfigs[currentDay];
     }
 
-    public float DropBook(DropZone zone, Book book)
+    public int DropBook(DropZone zone, Book book)
     {
         int score = 0;
         if (correctZones[zone].Contains(book.Genre))

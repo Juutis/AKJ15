@@ -27,6 +27,8 @@ public class BrowsableBook : MonoBehaviour
     
     private Book book;
 
+    public bool IsOpen { get; private set; } = false;
+
     void Awake()
     {
         main = this;
@@ -60,11 +62,13 @@ public class BrowsableBook : MonoBehaviour
     {
         InitializeBook(book);
         bookContainer.SetActive(true);
+        IsOpen = true;
     }
 
     public void CloseBook()
     {
         bookContainer.SetActive(false);
+        IsOpen = false;
     }
 
     public void InitializeBook(Book book)
