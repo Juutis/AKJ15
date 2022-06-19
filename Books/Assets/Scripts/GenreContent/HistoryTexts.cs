@@ -13,5 +13,7 @@ public static class HistoryTexts
         "Before the uprising, the country was ravaged by famine. Only the wealthy had money for food.",
         "A faction rose from the poor, promising equality and work for everyone.",
         "The prime minister was found to be embezzling money while taking bribes.",
+        "People took to the streets to protest but they were forcibly dispersed and arrested in a massive show of force by the police.",
+        "forcibly dispersed and arrested in a massive show of force by the police.",
     };
 }
