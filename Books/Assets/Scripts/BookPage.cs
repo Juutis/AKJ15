@@ -9,14 +9,21 @@ public class BookPage
     private int lineCount = 6;
     public List<BookLine> Lines { get; set; }
 
-    public BookPage(Genre genre)
+    public BookPage(Genre genre, bool nonOffensive = false)
     {
         this.genre = genre;
         Lines = new List<BookLine>();
         int nonRandom = Random.Range(0, lineCount);
         for (int i = 0; i < lineCount; i++)
         {
-            if (i == nonRandom)
+            if (i == nonRandom && nonOffensive)
+            {
+                Lines.Add(new BookLine(false)
+                {
+                    Text = BookManager.main.GetRandomNonOffensiveLine()
+                });
+            }
+            else if (i == nonRandom)
             {
                 Lines.Add(new BookLine(false)
                 {

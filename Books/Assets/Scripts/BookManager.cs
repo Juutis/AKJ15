@@ -73,6 +73,12 @@ public class BookManager : MonoBehaviour
         return strings[Random.Range(0, strings.Count)];
     }
 
+    public string GetRandomNonOffensiveLine()
+    {
+        List<string> strings = VulgarTexts.NonOffensiveTexts;
+        return strings[Random.Range(0, strings.Count)];
+    }
+
     private void SpawnBook()
     {
         if (booksToSpawn.Count == 0) 
