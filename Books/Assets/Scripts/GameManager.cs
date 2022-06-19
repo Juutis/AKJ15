@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     private int otherBooksDeliveredToday = 0;
     private int incorrectlySavedBooksToday = 0;
 
+    public GameObject Bag;
+
     public ReputationManager ReputationManager { get; private set; } = new ReputationManager();
 
     private Dictionary<DropZone, List<Genre>> correctZones = new()
@@ -90,6 +92,10 @@ public class GameManager : MonoBehaviour
         {
             firstDay = false;
             if (Input.GetKey(KeyCode.Return))
+            {
+                gameState = DayState.Feedback;
+            }
+            if (Time.time > dayStarted + config.DayLength)
             {
                 gameState = DayState.Feedback;
             }
@@ -226,6 +232,15 @@ public class GameManager : MonoBehaviour
         incorrectlySavedBooksToday = 0;
         DayStartUI.color = Color.black;
         DayStartText.text = "Day " + (currentDay + 1);
+
+        if (currentDay == 0)
+        {
+            Bag.SetActive(false);
+        }
+        else
+        {
+            Bag.SetActive(true);
+        }
     }
 
     private IEnumerator FadeOutImage(Image image, Color c1, Color c2)
@@ -250,7 +265,7 @@ public class GameManager : MonoBehaviour
             var rebelBookConfig = GetDayConfig().GenreBookCounts.Where(it => it.genre == Genre.Rebel).FirstOrDefault();
             if (rebelBookConfig != null) {
                 var totalRebelBooksToday = rebelBookConfig.count;
-                ReputationManager.UpdateRebelReputation(totalRebelBooksToday, rebelBooksDeliveredToday);
+                ReputationManager.UpdateRebelReputation(totalRebelBooksToday, rebelBooksDeliveredToday, otherBooksDeliveredToday);
             }
         }
 

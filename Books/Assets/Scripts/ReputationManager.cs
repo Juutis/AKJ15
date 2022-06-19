@@ -32,10 +32,11 @@ public class ReputationManager
         StateReputation += reputationChange;
     }
 
-    public void UpdateRebelReputation(int totalAvailableRebelBooks, int rebelBooksDelivered)
+    public void UpdateRebelReputation(int totalAvailableRebelBooks, int rebelBooksDelivered, int otherBooksDelivered)
     {
         var reputationChange = 0;
-        reputationChange += rebelBooksDelivered - 2;
+        reputationChange += 2 * rebelBooksDelivered - 4;
+        reputationChange = otherBooksDelivered / 2;
         reputationChange = Mathf.Clamp(reputationChange, -5, 5);
         StateReputation += reputationChange;
     }
