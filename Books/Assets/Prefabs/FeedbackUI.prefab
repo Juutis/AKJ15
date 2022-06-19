@@ -4458,10 +4458,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283b5dd76c41dac4d86adbfa0097e6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  correctBooksText: {fileID: 0}
-  streakText: {fileID: 0}
-  dayScoreText: {fileID: 0}
-  totalScoreText: {fileID: 0}
+  correctBooksText: {fileID: 3703233919801617585}
+  streakText: {fileID: 5615017453063993891}
+  dayScoreText: {fileID: 2891822526579810559}
+  totalScoreText: {fileID: 2770155590944665624}
+  finalCorrectBooksText: {fileID: 4843392927584169296}
+  finalStreakText: {fileID: 5499817301057353207}
+  finalDayScoreText: {fileID: 8782667004884184745}
+  finalTotalScoreText: {fileID: 1587879861143019653}
   supervisorFeedback: {fileID: 3967736840254012523}
   rebelFeedback: {fileID: 3453063897359035700}
   endOfDayPanel: {fileID: 6388171286108533737}

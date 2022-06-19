@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: Day1
   m_EditorClassIdentifier: 
   genreBookCounts:
-  - genre: 0
-    count: 1
   - genre: 1
-    count: 1
+    count: 5
   - genre: 2
-    count: 20
-  MinBookSpawnInterval: 10
+    count: 5
+  MinBookSpawnInterval: 15
   MaxBookSpawnInterval: 20

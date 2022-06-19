@@ -11,7 +11,7 @@ public class Clock : MonoBehaviour
     private Transform HourHand;
 
     private float timeStarted;
-    private float dayDuration = 60;
+    private float dayDuration = 300;
     private float hourDuration = 5f;
     private DayState previousState;
 
@@ -30,10 +30,10 @@ public class Clock : MonoBehaviour
 
         if (state == DayState.Game)
         {
-            float minuteAngle = -(Time.time - timeStarted) / hourDuration * 360;
+            float minuteAngle = -(Time.time - GameManager.main.dayStarted) / hourDuration * 360;
             MinuteHand.rotation = Quaternion.Euler(0, 0, minuteAngle);
 
-            float hourAngle = -(Time.time - timeStarted) / dayDuration * 360;
+            float hourAngle = -(Time.time - GameManager.main.dayStarted) / dayDuration * 360;
             HourHand.rotation = Quaternion.Euler(0, 0, hourAngle - 95);
         }
 
@@ -42,6 +42,8 @@ public class Clock : MonoBehaviour
 
     public void Reset()
     {
+        dayDuration = GameManager.main.config.DayLength;
+        hourDuration = dayDuration / 12;
         timeStarted = Time.time;
         MinuteHand.rotation = Quaternion.identity;
         HourHand.rotation = Quaternion.Euler(0, 0, -95);

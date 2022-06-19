@@ -16,6 +16,15 @@ public class FeedbackUI : MonoBehaviour
     private Text totalScoreText;
 
     [SerializeField]
+    private Text finalCorrectBooksText;
+    [SerializeField]
+    private Text finalStreakText;
+    [SerializeField]
+    private Text finalDayScoreText;
+    [SerializeField]
+    private Text finalTotalScoreText;
+
+    [SerializeField]
     private Feedback supervisorFeedback;
     [SerializeField]
     private Feedback rebelFeedback;
@@ -207,10 +216,15 @@ public class FeedbackUI : MonoBehaviour
 
     public void UpdateScores(float totalScore, float dayScore, int totalBooksDay, int correctBooks, int streak)
     {
-//        correctBooksText.text = $"{correctBooks} / {totalBooksDay}";
-//        streakText.text = streak.ToString();
-//        totalScoreText.text = totalScore.ToString();
-//        dayScoreText.text = dayScore.ToString();
+        correctBooksText.text = $"{correctBooks} / {totalBooksDay}";
+        streakText.text = streak.ToString();
+        totalScoreText.text = totalScore.ToString();
+        dayScoreText.text = dayScore.ToString();
+        
+        finalCorrectBooksText.text = $"{correctBooks} / {totalBooksDay}";
+        finalStreakText.text = streak.ToString();
+        finalTotalScoreText.text = totalScore.ToString();
+        finalDayScoreText.text = dayScore.ToString();
     }
 
     public void SetSupervisorFeedback(string dayResult, string reputation)
