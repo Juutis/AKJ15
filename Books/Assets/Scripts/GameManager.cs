@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Image DayStartUI;
     [SerializeField]
+    private Text DayStartText;
+    [SerializeField]
     private FeedbackUI FeedbackUI;
     [SerializeField]
     private GameObject RulesUI;
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject RulesHilight;
 
-    private int currentDay = 0;
+    public int currentDay { get; private set; } = 0;
     private DayState gameState = DayState.Start;
     private float dayStarted;
 
@@ -29,10 +31,12 @@ public class GameManager : MonoBehaviour
     private int currentDayScore = 0;
     private int currentStreak = 0;
     private int correctlyPlacedBooksToday = 0;
-    private bool firstDay = true;
+    public bool firstDay { get; private set; } = true;
     private int correctlySavedBooksToday = 0;
     private int handledBooksToday = 0;
     private int rebelBooksDeliveredToday = 0;
+    private int otherBooksDeliveredToday = 0;
+    private int incorrectlySavedBooksToday = 0;
 
     public ReputationManager ReputationManager { get; private set; } = new ReputationManager();
 
@@ -57,7 +61,6 @@ public class GameManager : MonoBehaviour
         if (gameState == DayState.Start)
         {
             RulesUI.SetActive(false);
-            FeedbackUI.gameObject.SetActive(false);
             DayStartUI.gameObject.SetActive(true);
             if (Input.anyKeyDown)
             {
@@ -75,7 +78,6 @@ public class GameManager : MonoBehaviour
         }
         else if (gameState == DayState.Feedback)
         {
-            FeedbackUI.gameObject.SetActive(true);
             RulesUI.SetActive(false);
             DayStartUI.gameObject.SetActive(false);
             FeedbackUI.TriggerEndOfDay();
@@ -87,7 +89,6 @@ public class GameManager : MonoBehaviour
         else
         {
             firstDay = false;
-            FeedbackUI.gameObject.SetActive(false);
             if (Input.GetKey(KeyCode.Return))
             {
                 gameState = DayState.Feedback;
@@ -128,6 +129,10 @@ public class GameManager : MonoBehaviour
         else
         {
             currentStreak = 0;
+            if (zone == DropZone.Bag)
+            {
+                otherBooksDeliveredToday++;
+            }
         }
 
         handledBooksToday++;
@@ -141,6 +146,15 @@ public class GameManager : MonoBehaviour
     {
         int totalBooksCount = BookManager.main.Books.Count;
         feedbackUI.UpdateScores(totalRunScore, currentDayScore, totalBooksCount, correctlyPlacedBooksToday, currentStreak);
+        feedbackUI.SetSupervisorFeedback(ReputationManager.GetStateDayResult(totalBooksCount, handledBooksToday, correctlyPlacedBooksToday, incorrectlySavedBooksToday), ReputationManager.GetStateReputationText());
+
+        var rebelBookConfig = GetDayConfig().GenreBookCounts.Where(it => it.genre == Genre.Rebel).FirstOrDefault();
+        var totalRebelBooksToday = 0;
+        if (rebelBookConfig != null) {
+            totalRebelBooksToday = rebelBookConfig.count;
+        }
+
+        feedbackUI.SetRebelFeedback(ReputationManager.GetRebelDayResult(totalRebelBooksToday, rebelBooksDeliveredToday, otherBooksDeliveredToday), ReputationManager.GetRebelReputationText());
     }
 
     public void ShowRules()
@@ -159,6 +173,20 @@ public class GameManager : MonoBehaviour
         RulesUI.SetActive(false);
     }
 
+    public void StartNextDay()
+    {
+        currentDay++;
+        if (currentDay < dayConfigs.Count)
+        {
+            InitializeDay();
+            gameState = DayState.Start;
+        }
+        else
+        {
+            Debug.Log("YOU WIN!");
+        }
+    }
+
     private void InitializeDay()
     {
         dayStarted = Time.time;
@@ -167,6 +195,11 @@ public class GameManager : MonoBehaviour
         correctlyPlacedBooksToday = 0;
         correctlySavedBooksToday = 0;
         handledBooksToday = 0;
+        rebelBooksDeliveredToday = 0;
+        otherBooksDeliveredToday = 0;
+        incorrectlySavedBooksToday = 0;
+        DayStartUI.color = Color.black;
+        DayStartText.text = "Day " + (currentDay + 1);
     }
 
     private IEnumerator FadeOutImage(Image image, Color c1, Color c2)
@@ -184,8 +217,7 @@ public class GameManager : MonoBehaviour
     private void handleReputationChangeAfterDay()
     {
         int totalBooksToday = BookManager.main.Books.Count;
-        int totalBooksHandled = correctlyPlacedBooksToday;
-        ReputationManager.UpdateStateReputation(totalBooksToday, handledBooksToday, correctlySavedBooksToday);
+        ReputationManager.UpdateStateReputation(totalBooksToday, handledBooksToday, correctlySavedBooksToday, incorrectlySavedBooksToday);
 
         if (!firstDay)
         {
@@ -213,3 +245,4 @@ public enum DropZone
     Burn,
     Bag
 }
+

@@ -29,6 +29,8 @@ public class FeedbackUI : MonoBehaviour
     private GameObject scorePanel;
     [SerializeField]
     private GameObject rebelIntroductionPanel;
+    [SerializeField]
+    private Text endOfDayText;
 
     private State status = State.NONE;
 
@@ -97,16 +99,32 @@ public class FeedbackUI : MonoBehaviour
                     status = State.SUPERVISOR_FEEDBACK;
                     break;
                 case State.SUPERVISOR_FEEDBACK:
-                    status = State.REBEL_FEEDBACK;
+                    if (GameManager.main.currentDay == 0)
+                    {
+                        status = State.SCORE;
+                    }
+                    else
+                    {
+                        status = State.REBEL_FEEDBACK;
+                    }
                     break;
                 case State.REBEL_FEEDBACK:
                     status = State.SCORE;
                     break;
                 case State.SCORE:
-                    status = State.REBEL_INTRODUCTION;
+                    if (GameManager.main.currentDay == 0)
+                    {
+                        status = State.REBEL_INTRODUCTION;
+                    }
+                    else
+                    {
+                        status = State.NONE;
+                        GameManager.main.StartNextDay();
+                    }
                     break;
                 case State.REBEL_INTRODUCTION:
-                    // TRIGGER NEXT DAY
+                    status = State.NONE;
+                    GameManager.main.StartNextDay();
                     break;
             }
         }
@@ -116,6 +134,7 @@ public class FeedbackUI : MonoBehaviour
     {
         if (status == State.NONE)
         {
+            endOfDayText.text = "End of day " + (GameManager.main.currentDay + 1);
             status = State.END_OF_DAY;
         }
     }
@@ -128,12 +147,16 @@ public class FeedbackUI : MonoBehaviour
 //        dayScoreText.text = dayScore.ToString();
     }
 
-    public void SetSupervisorFeedback(string feedback)
+    public void SetSupervisorFeedback(string dayResult, string reputation)
     {
+        supervisorFeedback.SetDayResultText(dayResult);
+        supervisorFeedback.SetTotalReputationText(reputation);
     }
 
-    public void SetRebelFeedback(string feedback)
+    public void SetRebelFeedback(string dayResult, string reputation)
     {
+        rebelFeedback.SetDayResultText(dayResult);
+        rebelFeedback.SetTotalReputationText(reputation);
     }
 
     public enum State

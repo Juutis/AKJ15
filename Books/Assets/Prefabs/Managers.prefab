@@ -164,12 +164,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DayStartUI: {fileID: 1292940130}
+  DayStartText: {fileID: 1502495422}
   FeedbackUI: {fileID: 313376776304678178}
   RulesUI: {fileID: 8362647933357547459}
   config: {fileID: 11400000, guid: f72ee211d5ce97e4b94cce25169de1ca, type: 2}
   dayConfigs:
   - {fileID: 11400000, guid: 913512068da3ce34793b180c809edf86, type: 2}
   - {fileID: 11400000, guid: cf1873b7e74e6e542a7e163a5df09eef, type: 2}
+  - {fileID: 11400000, guid: 7a68eae1c67a4cf418d04fa84a9def8c, type: 2}
+  - {fileID: 11400000, guid: 38bffee1c4466b349914dc89f12bb8b5, type: 2}
+  - {fileID: 11400000, guid: ecec0461b822b634b9abdebe3e11638f, type: 2}
   RulesHilight: {fileID: 4534584781213486420}
 --- !u!82 &8010446682587893450
 AudioSource:
@@ -2961,6 +2965,10 @@ PrefabInstance:
     - target: {fileID: 6963459240047505989, guid: 6de91fcb8df3fcd4ca7e613e90e56178, type: 3}
       propertyPath: m_Name
       value: FeedbackUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963459240047505989, guid: 6de91fcb8df3fcd4ca7e613e90e56178, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6963459240047505992, guid: 6de91fcb8df3fcd4ca7e613e90e56178, type: 3}
       propertyPath: m_Pivot.x

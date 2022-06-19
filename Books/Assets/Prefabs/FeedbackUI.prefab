@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 6689715998048537690}
   - component: {fileID: 5343163077213699448}
   - component: {fileID: 241894608387858800}
+  - component: {fileID: 3453063897359035700}
   m_Layer: 5
   m_Name: RebelFeedback
   m_TagString: Untagged
@@ -265,6 +266,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3453063897359035700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677138100371483048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd439a92b31d5a647818a731e7f2f216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayResult: {fileID: 8694188602446438990}
+  totalReputation: {fileID: 2963367767783583219}
 --- !u!1 &1433502816839919568
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +797,7 @@ MonoBehaviour:
 
 
     Help
-    us and help the people. We''ll make the world a better place for everyone.'
+    us and you help the people. We''ll make the world a better place for everyone.'
 --- !u!1 &3545735310322336369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1550,7 +1565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8916120397478199716
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1779,6 +1794,7 @@ GameObject:
   - component: {fileID: 6963459238506768094}
   - component: {fileID: 6963459238506768093}
   - component: {fileID: 6963459238506768092}
+  - component: {fileID: 3967736840254012523}
   m_Layer: 5
   m_Name: SupervisorFeedback
   m_TagString: Untagged
@@ -1872,6 +1888,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &3967736840254012523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963459238506768090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd439a92b31d5a647818a731e7f2f216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayResult: {fileID: 6963459239408620967}
+  totalReputation: {fileID: 8046386682546995104}
 --- !u!1 &6963459239212165442
 GameObject:
   m_ObjectHideFlags: 0
@@ -2129,7 +2159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6963459240047505992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2209,13 +2239,14 @@ MonoBehaviour:
   streakText: {fileID: 0}
   dayScoreText: {fileID: 0}
   totalScoreText: {fileID: 0}
-  supervisorFeedback: {fileID: 0}
-  rebelFeedback: {fileID: 0}
+  supervisorFeedback: {fileID: 3967736840254012523}
+  rebelFeedback: {fileID: 3453063897359035700}
   endOfDayPanel: {fileID: 6388171286108533737}
   supervisorFeedbackPanel: {fileID: 6963459238506768090}
   rebelFeedbackPanel: {fileID: 677138100371483048}
   scorePanel: {fileID: 1844343764854346275}
   rebelIntroductionPanel: {fileID: 7566801673951460486}
+  endOfDayText: {fileID: 2035087321911248934}
 --- !u!1 &7044235633695305008
 GameObject:
   m_ObjectHideFlags: 0
