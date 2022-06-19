@@ -13,10 +13,10 @@ public static class SoftScienceTexts
         "Societal and cultural norms are passed on via the process of socialization.",
         "Group B displayed signs of submissive behavior in response to the stimuli presented.",
         "Propaganda can be defined as biased information which is used to promote a point of view.",
-        "Schematic processing enables peope to navigate usual situations with little mental effort, as new perceptions are quickly organize into schemas.",
+        "Schematic processing enables peope to navigate usual situations with little mental effort, as new perceptions are quickly organized into schemas.",
         "Priming refers to the phenomenon of one stimulus influencing a response to another subsequent stimulus, without conscious direction.",
         "influencing a response to another subsequent stimulus, without conscious direction.",
-        "with little mental effort, as new perceptions are quickly organize into schemas.",
+        "with little mental effort, as new perceptions are quickly organized into schemas.",
         "how cultural practices relate to systems of power via social phenomena.",
     };
 }
