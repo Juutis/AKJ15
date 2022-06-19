@@ -102,7 +102,6 @@ public class GameManager : MonoBehaviour
         }
 
         RulesHilight.SetActive(firstDay);
-        Debug.Log(firstDay);
     }
 
     public DayConfig GetDayConfig()

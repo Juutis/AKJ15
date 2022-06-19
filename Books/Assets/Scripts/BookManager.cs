@@ -18,6 +18,7 @@ public class BookManager : MonoBehaviour
     private List<Book> booksToSpawn = new List<Book>();
 
     public Dictionary<Genre, List<string>> GenreText { get; set; }
+    public Dictionary<Genre, Queue<string>> GenreQueue { get; set; }
 
     [SerializeField]
     private BookSpawner spawner;
@@ -38,6 +39,8 @@ public class BookManager : MonoBehaviour
         {
             Books = new List<Book>();
         }
+
+        GenreQueue = new Dictionary<Genre, Queue<string>>();
     }
 
     void Update()
@@ -69,14 +72,38 @@ public class BookManager : MonoBehaviour
 
     public string GetRandomLine(Genre genre)
     {
-        List<string> strings = GenreText[genre];
-        return strings[Random.Range(0, strings.Count)];
+        if (!GenreQueue.ContainsKey(genre) || GenreQueue[genre].Count == 0)
+        {
+            QueueTexts();
+        }
+        // List<string> strings = GenreText[genre];
+        // return strings[Random.Range(0, strings.Count)];
+        return GenreQueue[genre].Dequeue();
     }
 
     public string GetRandomNonOffensiveLine()
     {
         List<string> strings = VulgarTexts.NonOffensiveTexts;
         return strings[Random.Range(0, strings.Count)];
+    }
+
+    private void QueueTexts()
+    {
+        foreach (Genre g in System.Enum.GetValues(typeof(Genre)))
+        {
+
+            if (!GenreQueue.ContainsKey(g))
+            {
+                GenreQueue.Add(g, new());
+            }
+
+            System.Random r = new System.Random();
+            List<string> gTexts = GenreText[g];
+            foreach (int i in Enumerable.Range(0, gTexts.Count).OrderBy(x => r.Next()))
+            {
+                GenreQueue[g].Enqueue(gTexts[i]);
+            }
+        }
     }
 
     private void SpawnBook()
