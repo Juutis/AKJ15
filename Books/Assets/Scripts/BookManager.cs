@@ -25,7 +25,7 @@ public class BookManager : MonoBehaviour
 
     private DayConfig dayConfig;
 
-    private float initialSpawnDelay = 5.0f;
+    private float initialSpawnDelay = 2.5f;
 
     private void Awake()
     {
@@ -50,6 +50,7 @@ public class BookManager : MonoBehaviour
     
     public void InitializeDay(DayConfig dayConfig)
     {
+        CancelInvoke("SpawnBook");
         this.dayConfig = dayConfig;
         bookCount = 0;
         Books = new List<Book>();
@@ -62,6 +63,7 @@ public class BookManager : MonoBehaviour
             }
         });
         booksToSpawn.AddRange(Books);
+        Debug.Log("Spawning " + booksToSpawn.Count + " books");
         Invoke("SpawnBook", initialSpawnDelay);
     }
 

@@ -27,5 +27,5 @@ MonoBehaviour:
     count: 3
   - genre: 6
     count: 5
-  MinBookSpawnInterval: 7
-  MaxBookSpawnInterval: 8
+  MinBookSpawnInterval: 5
+  MaxBookSpawnInterval: 6

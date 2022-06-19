@@ -30,6 +30,7 @@ public class ReputationManager
         reputationChange += correctlySavedBooks / 2;
         reputationChange = Mathf.Clamp(reputationChange, -5, 5);
         StateReputation += reputationChange;
+        Debug.Log("State reputation is now " + StateReputation);
     }
 
     public void UpdateRebelReputation(int totalAvailableRebelBooks, int rebelBooksDelivered, int otherBooksDelivered)
@@ -38,7 +39,8 @@ public class ReputationManager
         reputationChange += 2 * rebelBooksDelivered - 4;
         reputationChange = otherBooksDelivered / 2;
         reputationChange = Mathf.Clamp(reputationChange, -5, 5);
-        StateReputation += reputationChange;
+        RebelReputation += reputationChange;
+        Debug.Log("Rebel reputation is now " + RebelReputation);
     }
 
     public string GetStateReputationText()
