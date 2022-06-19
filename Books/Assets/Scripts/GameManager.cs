@@ -12,9 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject FeedbackUI;
     [SerializeField]
+    private GameObject RulesUI;
+    [SerializeField]
     private GameConfig config;
     [SerializeField]
     private List<DayConfig> dayConfigs;
+    [SerializeField]
+    private GameObject RulesHilight;
 
     private int currentDay = 0;
     private DayState gameState = DayState.Start;
@@ -24,6 +28,7 @@ public class GameManager : MonoBehaviour
     private int currentDayScore = 0;
     private int currentStreak = 0;
     private int correctlyPlacedBooksToday = 0;
+    private bool firstDay = true;
 
     private Dictionary<DropZone, List<Genre>> correctZones = new()
     {
@@ -45,11 +50,19 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == DayState.Start)
         {
+            RulesUI.SetActive(false);
             FeedbackUI.SetActive(false);
             DayStartUI.gameObject.SetActive(true);
             if (Input.GetKey(KeyCode.Space))
             {
-                gameState = DayState.Game;
+                if (firstDay)
+                {
+                    gameState = DayState.FirstDayRules;
+                }
+                else
+                {
+                    gameState = DayState.Game;
+                }
                 StartCoroutine(FadeOutImage(DayStartUI, Color.black, new Color(0, 0, 0, 0)));
                 InitializeDay();
             }
@@ -57,16 +70,25 @@ public class GameManager : MonoBehaviour
         else if (gameState == DayState.Feedback)
         {
             FeedbackUI.SetActive(true);
+            RulesUI.SetActive(false);
             DayStartUI.gameObject.SetActive(false);
+        }
+        else if (gameState == DayState.FirstDayRules)
+        {
+
         }
         else
         {
+            firstDay = false;
             FeedbackUI.SetActive(false);
             if (Input.GetKey(KeyCode.Return))
             {
                 gameState = DayState.Feedback;
             }
         }
+
+        RulesHilight.SetActive(firstDay);
+        Debug.Log(firstDay);
     }
 
     public DayConfig GetDayConfig()
@@ -104,6 +126,22 @@ public class GameManager : MonoBehaviour
         feedbackUI.UpdateScores(totalRunScore, currentDayScore, totalBooksCount, correctlyPlacedBooksToday, currentStreak);
     }
 
+    public void ShowRules()
+    {
+        RulesUI.SetActive(true);
+    }
+
+    public void HideRules()
+    {
+        Debug.Log("OK");
+        if (gameState == DayState.FirstDayRules)
+        {
+            gameState = DayState.Game;
+        }
+
+        RulesUI.SetActive(false);
+    }
+
     private void InitializeDay()
     {
         dayStarted = Time.time;
@@ -128,6 +166,7 @@ public class GameManager : MonoBehaviour
 public enum DayState
 {
     Start,
+    FirstDayRules,
     Game,
     Feedback
 }
