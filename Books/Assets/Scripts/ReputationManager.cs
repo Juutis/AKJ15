@@ -37,7 +37,7 @@ public class ReputationManager
     {
         var reputationChange = 0;
         reputationChange += 2 * rebelBooksDelivered - 4;
-        reputationChange = otherBooksDelivered / 2;
+        reputationChange -= otherBooksDelivered / 2;
         reputationChange = Mathf.Clamp(reputationChange, -7, 7);
         RebelReputation += reputationChange;
         Debug.Log("Rebel reputation is now " + RebelReputation);
