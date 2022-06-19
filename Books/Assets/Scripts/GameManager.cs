@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject RulesUI;
     [SerializeField]
-    private GameConfig config;
+    public GameConfig config;
     [SerializeField]
     private List<DayConfig> dayConfigs;
     [SerializeField]
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     public int currentDay { get; private set; } = 0;
     private DayState gameState = DayState.Start;
-    private float dayStarted;
+    public float dayStarted { get; private set; }
 
     private int totalRunScore = 0;
     private int currentDayScore = 0;
@@ -200,6 +200,8 @@ public class GameManager : MonoBehaviour
         if (gameState == DayState.FirstDayRules)
         {
             gameState = DayState.Game;
+            dayStarted = Time.time;
+            BookManager.main.InitializeDay(dayConfigs[currentDay]);
         }
 
         RulesUI.SetActive(false);
@@ -224,7 +226,10 @@ public class GameManager : MonoBehaviour
     private void InitializeDay()
     {
         dayStarted = Time.time;
-        BookManager.main.InitializeDay(dayConfigs[currentDay]);
+        if (currentDay != 0)
+        {
+            BookManager.main.InitializeDay(dayConfigs[currentDay]);
+        }
         currentDayScore = 0;
         correctlyPlacedBooksToday = 0;
         correctlySavedBooksToday = 0;
