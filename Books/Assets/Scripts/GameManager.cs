@@ -208,7 +208,7 @@ public class GameManager : MonoBehaviour
         currentDay++;
         if (currentDay < dayConfigs.Count)
         {
-            InitializeDay();
+            //InitializeDay();
             gameState = DayState.Start;
             BrowsableBook.main.CloseBook(true);
             BookSpawner.main.ClearBooks();
