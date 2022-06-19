@@ -76,6 +76,12 @@ public class DraggableObject : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
     }
 
+    public void SetTargetPosition(Vector2 target)
+    {
+        snapping = true;
+        snapPosition = target;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -7,6 +7,9 @@ public class BookSpawner : MonoBehaviour
     [SerializeField]
     private ClickableBook bookPrefab;
 
+    [SerializeField]
+    private Rect targetRect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,19 @@ public class BookSpawner : MonoBehaviour
     {
         var bookObject = Instantiate(bookPrefab);
         bookObject.Initialize(book);
-        bookObject.transform.position = (Vector2)transform.position + Random.insideUnitCircle * 0.5f;
+        bookObject.transform.position = (Vector2)transform.position + Random.insideUnitCircle * 0.1f;
+        var draggable = bookObject.GetComponent<DraggableObject>();
+        draggable.SetTargetPosition(new Vector2(Random.Range(targetRect.xMin, targetRect.xMax), Random.Range(targetRect.yMin, targetRect.yMax)));
+    }
+    
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        DrawRect(targetRect);
+    }
+    
+    void DrawRect(Rect rect)
+    {
+        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
     }
 }
