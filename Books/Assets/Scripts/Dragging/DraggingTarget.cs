@@ -65,13 +65,14 @@ public class DraggingTarget : MonoBehaviour
             {
                 if (canPlaySound)
                 {
-                    if (openParticles != null)
-                    {
-                        openParticles.Stop();
-                    }
                     audioSrc.PlayOneShot(openSound);
                     canPlaySound = false;
                     Invoke("ResetSound", minSoundDelay);
+                }
+
+                if (openParticles != null)
+                {
+                    openParticles.Stop();
                 }
                 rend.sprite = sprite;
             }

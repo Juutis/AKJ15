@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e661a6c3e0d8c2a4a8caf00824790b94, type: 3}
   m_Name: BookConfig
   m_EditorClassIdentifier: 
-  pageCount: 6
+  pageCount: 10
   lineCharCount: 80
   minWordLength: 1
   maxWordLength: 7

@@ -19,7 +19,7 @@ public class Book
 
         if (genre == Genre.Vulgar)
         {
-            int countOfOffensivePages = pageCount / 3;
+            int countOfOffensivePages = pageCount / 2;
             List<int> offensivePageNumbers = new List<int>();
 
             while (offensivePageNumbers.Count < countOfOffensivePages)
@@ -31,14 +31,14 @@ public class Book
 
             for (int i = 0; i < pageCount; i++)
             {
-                Pages.Add(new BookPage(genre, !offensivePageNumbers.Contains(i)));
+                Pages.Add(new BookPage(genre, !offensivePageNumbers.Contains(i), i % 3 < 2));
             }
         }
         else
         {
             for (int i = 0; i < pageCount; i++)
             {
-                Pages.Add(new BookPage(genre));
+                Pages.Add(new BookPage(genre, false, i % 3 < 2));
             }
         }
     }
