@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: BookConfig
   m_EditorClassIdentifier: 
   pageCount: 6
-  lineCharCount: 60
+  lineCharCount: 80
   minWordLength: 1
   maxWordLength: 7
